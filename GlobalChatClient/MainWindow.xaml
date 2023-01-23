@@ -1,0 +1,35 @@
+﻿<Window x:Class="GlobalChatClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GlobalChatClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000" MinHeight="550">
+    <Window.Background>
+        <ImageBrush ImageSource="Resource/wp4410800.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="1.8*" />
+        </Grid.RowDefinitions>
+        <ScrollViewer Name="Scrollviwer"  VerticalScrollBarVisibility="Auto">
+            <StackPanel  Orientation="Vertical" Background="Transparent" Name="Chat_list" ></StackPanel>
+
+        </ScrollViewer>
+        <StackPanel Margin="0,0,0,10"  Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
+
+            <TextBox Name="TXT_BOX" Width="500" Height="60" Background="#7FFFD700" FontSize="15"  Foreground="White" SelectionBrush="#FFCFC19E" 
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                   
+                    VerticalAlignment="Center"
+                    TextWrapping="Wrap"
+                    MaxLength="80"
+                    materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                     materialDesign:HintAssist.Hint="SEND MESSAGE . . ."/>
+            <Button Width="100" FontSize="18" Height="60" Command="{Binding Send_Btn}" Background="#B2FFD700" BorderBrush="{x:Null}" Click="Button_Click" >Send</Button>
+        </StackPanel>
+    </Grid>
+</Window>
