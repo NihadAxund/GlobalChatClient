@@ -27,7 +27,7 @@ namespace GlobalChatClient
         public MainWindow()
         {
             InitializeComponent();
-            Task.Factory.StartNew(Start);
+            Task.Factory.StartNew(Start,TaskCreationOptions.LongRunning);
         }
         private void SendMessage(string text)
         {
@@ -37,8 +37,8 @@ namespace GlobalChatClient
                 var bytes = Encoding.ASCII.GetBytes(text);
                 socket.Send(bytes);
             });
-            Client_Label cl = new Client_Label(text); cl.HorizontalAlignment= HorizontalAlignment.Right;
-            cl.Margin= new Thickness(0,0,10,0); Chat_list.Children.Add(cl);
+            Client_Label cl = new Client_Label(text); cl.HorizontalAlignment= HorizontalAlignment.Left;
+            cl.Margin= new Thickness(10,0,0,0); Chat_list.Children.Add(cl);
 
         }
         private void AddList(string msg)
@@ -46,7 +46,7 @@ namespace GlobalChatClient
             this.Dispatcher.BeginInvoke(new Action(() =>
             {
                 Server_Label sl = new Server_Label(msg);
-                sl.HorizontalAlignment = HorizontalAlignment.Left; sl.Margin = new Thickness(10, 0, 0, 0);
+                sl.HorizontalAlignment = HorizontalAlignment.Right; sl.Margin = new Thickness(0, 0, 10, 0);
                 Chat_list.Children.Add(sl);
             }));
         }
@@ -77,8 +77,11 @@ namespace GlobalChatClient
             catch (Exception)
             {
 
-                MessageBox.Show("Can not connct to the server >>>");
-                Close();
+                this.Dispatcher.Invoke(new Action(() =>
+                {
+                    Close();
+                    MessageBox.Show("Can not connct to the server >>>");
+                })); 
             }
         
         }
