@@ -21,7 +21,7 @@
         </ScrollViewer>
         <StackPanel Margin="0,0,0,10"  Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
 
-            <TextBox Name="TXT_BOX" Width="500" Height="60" Background="#7FFFD700" FontSize="15"  Foreground="White" SelectionBrush="#FFCFC19E" 
+            <TextBox Name="TXT_BOX" Width="500" Height="60" Background="#7FFFD700" FontSize="15" KeyUp="TXT_BOX_KeyUp" Foreground="White" SelectionBrush="#FFCFC19E" 
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                    
                     VerticalAlignment="Center"

@@ -45,6 +45,7 @@ namespace GlobalChatClient
         {
             this.Dispatcher.BeginInvoke(new Action(() =>
             {
+               
                 Server_Label sl = new Server_Label(msg);
                 sl.HorizontalAlignment = HorizontalAlignment.Right; sl.Margin = new Thickness(0, 0, 10, 0);
                 Chat_list.Children.Add(sl);
@@ -85,13 +86,25 @@ namespace GlobalChatClient
             }
         
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Send()
         {
             string str = TXT_BOX.Text;
+            TXT_BOX.Text = "";
             if (str.Length > 0 && str != " ")
                 SendMessage(str);
             else return;
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Send();
+        }
+
+        private void TXT_BOX_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key==Key.Enter)
+            {
+                Send();
+            }
         }
     }
 }
