@@ -38,7 +38,7 @@ namespace GlobalChatClient
                 socket.Send(bytes);
             });
             Client_Label cl = new Client_Label(text); cl.HorizontalAlignment= HorizontalAlignment.Left;
-            cl.Margin= new Thickness(10,0,0,0); Chat_list.Children.Add(cl);
+            cl.Margin= new Thickness(10,0,0,0); Chat_list.Children.Add(cl); Chat_list.ScrollOwner.ScrollToEnd();
 
         }
         private void AddList(string msg)
@@ -49,6 +49,8 @@ namespace GlobalChatClient
                 Server_Label sl = new Server_Label(msg);
                 sl.HorizontalAlignment = HorizontalAlignment.Right; sl.Margin = new Thickness(0, 0, 10, 0);
                 Chat_list.Children.Add(sl);
+                Chat_list.ScrollOwner.ScrollToEnd();
+                
             }));
         }
         private void Start()
